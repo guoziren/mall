@@ -1,19 +1,14 @@
 package com.lycguo.mall.order.controller;
 
-import java.util.Arrays;
-import java.util.Map;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
-import com.lycguo.mall.order.entity.OrderEntity;
-import com.lycguo.mall.order.service.OrderService;
 import com.lycguo.common.utils.PageUtils;
 import com.lycguo.common.utils.R;
+import com.lycguo.mall.order.entity.OrderEntity;
+import com.lycguo.mall.order.service.OrderService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Arrays;
+import java.util.Map;
 
 
 
