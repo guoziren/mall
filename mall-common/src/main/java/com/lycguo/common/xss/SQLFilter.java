@@ -8,7 +8,7 @@
 
 package com.lycguo.common.xss;
 
-import io.renren.common.exception.RRException;
+import com.lycguo.common.exception.RRException;
 import org.apache.commons.lang.StringUtils;
 
 /**
