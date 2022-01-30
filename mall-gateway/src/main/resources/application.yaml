@@ -16,14 +16,22 @@ spring:
           #  断言规则
           predicates:
             - Query=url,qq
+        - id: product_route
+          # lb为 load balacne 负载均衡， 后面是服务名
+          uri: lb://mall-product
+          predicates:
+            # 前端项目，都带上api前缀, /**表示匹配所有
+            - Path=/api/product/**
+          filters:
+            - RewritePath=/api/(?<segment>.*),/$\{segment}
         - id: admin_route
           # lb为 load balacne 负载均衡， 后面是服务名
           uri: lb://renren-fast
           predicates:
+            # 前端项目，都带上api前缀, /**表示匹配所有
             - Path=/api/**
           filters:
             - RewritePath=/api/(?<segment>.*),/renren-fast/$\{segment}
-# 前端项目，都带上api前缀, /**表示匹配所有
   application:
     name: mall-gateway
 
