@@ -8,13 +8,14 @@ import com.lycguo.common.utils.Query;
 import com.lycguo.mall.product.dao.CategoryDao;
 import com.lycguo.mall.product.entity.CategoryEntity;
 import com.lycguo.mall.product.service.CategoryService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-
+@Slf4j
 @Service("categoryService")
 public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity> implements CategoryService {
 
@@ -44,6 +45,12 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
                     - (menu2.getSort() == null ? 0 : menu2.getSort());
         }).collect(Collectors.toList());
         return categoryEntities;
+    }
+
+    @Override
+    public void deleteMenuByIds(List<Long> asList) {
+        int result = baseMapper.deleteBatchIds(asList);
+        log.info("result = {}", result);
     }
 
     private List<CategoryEntity> getChildren(CategoryEntity root, List<CategoryEntity> all) {
