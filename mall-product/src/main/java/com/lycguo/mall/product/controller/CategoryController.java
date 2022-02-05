@@ -55,9 +55,13 @@ public class CategoryController {
     @RequestMapping("/save")
     //@RequiresPermissions("product:category:save")
     public R save(@RequestBody CategoryEntity category){
-		categoryService.save(category);
+        boolean save = categoryService.save(category);
+        if (save) {
+            return R.ok().put("category", category);
+        } else {
+            return R.error("保存失败");
+        }
 
-        return R.ok();
     }
 
     /**
